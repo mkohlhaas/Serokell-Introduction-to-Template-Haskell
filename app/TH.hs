@@ -17,7 +17,6 @@ import Language.Haskell.TH
 -- >>> :i ExpQ
 -- type ExpQ ∷ *
 -- type ExpQ = Q Exp
---   	-- Defined in ‘Language.Haskell.TH.Lib.Internal’
 --
 -- >>> :t runQ
 -- runQ ∷ Quasi m ⇒ Q a → m a

@@ -55,11 +55,9 @@ mp = $mypair
 -- type Tuple3 ∷ * → * → Constraint
 -- class Tuple3 t r | t → r where
 --   _3 ∷ t → r
---   {-# MINIMAL _3 #-}
---   	-- Defined at /home/schmidh/Temp/thtest/app/Main.hs:50:3
 
 -- >>> runQ [d|instance Tuple3 (a, b, c) c where _3 (_, _, c) = c|]
--- [InstanceD Nothing [] (AppT (AppT (ConT Main.Tuple3) (AppT (AppT (AppT (TupleT 3) (VarT a_23)) (VarT b_24)) (VarT c_25))) (VarT c_25)) [FunD Main._3 [Clause [TupP [WildP,WildP,VarP c_26]] (NormalB (VarE c_26)) []]]]
+-- [InstanceD Nothing [] (AppT (AppT (ConT Main.Tuple3) (AppT (AppT (AppT (TupleT 3) (VarT a)) (VarT b)) (VarT c))) (VarT c)) [FunD Main._3 [Clause [TupP [WildP,WildP,VarP c]] (NormalB (VarE c)) []]]]
 
 -- $(generateTupleInstance 3 5)
 
@@ -67,10 +65,6 @@ mp = $mypair
 -- type Tuple3 ∷ * → * → Constraint
 -- class Tuple3 t r | t → r where
 --   _3 ∷ t → r
---   {-# MINIMAL _3 #-}
---   	-- Defined at /home/schmidh/Temp/thtest/app/Main.hs:52:3
--- instance Tuple3 (t1, t2, t3, t4, t5) t3
---   -- Defined at /home/schmidh/Temp/thtest/app/Main.hs:64:3
 
 -- >>> _3 (42, "hello", '#', [], 3.14)
 -- '#'
@@ -79,33 +73,16 @@ mp = $mypair
 $(generateTupleBoilerplate 10)
 
 -- >>> :i Tuple3
--- type Tuple3 ∷ * → * → Constraint
--- class Tuple3 t r | t → r where
---   _3 ∷ t → r
---   {-# MINIMAL _3 #-}
---   	-- Defined at /home/schmidh/Temp/thtest/app/Main.hs:79:3
--- instance Tuple3 (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10) t3
---   -- Defined at /home/schmidh/Temp/thtest/app/Main.hs:79:3
--- instance Tuple3 (t1, t2, t3, t4, t5, t6, t7, t8, t9) t3
---   -- Defined at /home/schmidh/Temp/thtest/app/Main.hs:79:3
--- instance Tuple3 (t1, t2, t3, t4, t5, t6, t7, t8) t3
---   -- Defined at /home/schmidh/Temp/thtest/app/Main.hs:79:3
--- instance Tuple3 (t1, t2, t3, t4, t5, t6, t7) t3
---   -- Defined at /home/schmidh/Temp/thtest/app/Main.hs:79:3
--- instance Tuple3 (t1, t2, t3, t4, t5, t6) t3
---   -- Defined at /home/schmidh/Temp/thtest/app/Main.hs:79:3
--- instance Tuple3 (t1, t2, t3, t4, t5) t3
---   -- Defined at /home/schmidh/Temp/thtest/app/Main.hs:79:3
--- instance Tuple3 (t1, t2, t3, t4) t3
---   -- Defined at /home/schmidh/Temp/thtest/app/Main.hs:79:3
--- instance Tuple3 (t1, t2, t3) t3
---   -- Defined at /home/schmidh/Temp/thtest/app/Main.hs:79:3
+-- type Tuple3 :: * -> * -> Constraint
+-- class Tuple3 t r | t -> r where
+--   _3 :: t -> r
 --
 -- >>> _3 (42, "hello", '#', [], 3.14)
 -- '#'
 --
 -- >>> _10 (42, "hello", '#', [], 3.14, 42, "hello", '#', [], 3.14)
 -- 3.14
+
 
 -------------
 -- Summary --
